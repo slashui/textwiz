@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+
+<head style="font-size: 16px;">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <!-- import Vue before Element -->
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <title>内容工厂</title>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        @font-face {
+            font-family: DINCondensed;
+            src: url('./font/DIN\ Condensed\ Bold.ttf');
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .layer-content {
+            width: 100%;
+        }
+
+        .white-layer {
+            background-color: #FFFFFF;
+        }
+
+        .grey-layer {
+            background-color: #F9F9F9;
+        }
+
+        .dark-grey-layer {
+            background-color: #F7F9FA;
+        }
+
+        .layer-01 {
+            height: 37.5rem;
+            padding: 0.82rem 1rem;
+            box-sizing: border-box;
+            background-image: url('./images//banner.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .layer-01 .banner-content {
+            height: 100%;
+            position: relative;
+        }
+
+        .layer-01 .banner-content img {
+            width: 9.94rem;
+        }
+
+        #element-strings {
+            color: #FFFFFF;
+            font-size: 2.8rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: 400;
+            letter-spacing: 0.5rem;
+        }
+
+        #element-strings span {
+            font-weight: bold;
+            font-size: 3.2rem;
+        }
+
+        .layer-02 {
+            min-height: 33.75rem;
+            overflow: hidden;
+        }
+
+        .layer-02 .layer-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+        .layer-02 .layer-content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .col-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layer-02 .dark-grey-layer {
+            min-height: 22.5rem;
+            flex-grow: 1;
+        }
+
+        .layer-02 .nav-icon-box {
+            padding-top: 3.875rem;
+        }
+
+        .layer-02 .nav-icon-box .nav-icon {
+            display: block;
+            margin: auto;
+        }
+
+        .layer-02 .title {
+            text-align: center;
+            font-size: 1.375rem;
+            font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
+            font-weight: bold;
+            color: #333333;
+            margin-top: 2.625rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .layer-02 p {
+            font-size: 0.875rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.45);
+            text-align: center;
+            padding-bottom: 1.25rem;
+        }
+
+        .layer-03 {
+            min-height: 42.5rem;
+        }
+
+        .layer-03 h4 {
+            font-size: 1.75rem;
+            font-family: MicrosoftYaHei;
+            color: rgba(0, 0, 0, 0.85);
+            text-align: center;
+            padding-top: 4.43rem;
+            margin-bottom: 4.687rem;
+        }
+
+        .layer-03 ul {
+            padding-top: 2.5rem;
+        }
+
+        .layer-03 ul li {
+            font-size: 1rem;
+            font-family: MicrosoftYaHei;
+            color: #000000;
+            display: flex;
+            margin-bottom: 2.37rem;
+            align-items: center;
+        }
+
+        .layer-03 ul li .icon-box {
+            display: block;
+            width: 4.5rem;
+            height: 4.5rem;
+            margin-right: 1rem;
+        }
+
+        .layer-03 ul li p {
+            flex: 1;
+        }
+
+        .layer-03 .layer img {
+            display: block;
+            width: 100%;
+        }
+
+        .layer-03 .layer .publish-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .layer-03 .layer .publish-box .sub-title {
+            font-size: 1rem;
+            font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .layer-03 .layer .publish-box .num-box {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .layer-03 .layer .publish-box .num-box .num {
+            height: 4rem;
+            line-height: 4.2rem;
+            background: #FFFFFF;
+            border-radius: 0.25rem;
+            border: 1px solid #979797;
+            padding: 0 0.625rem;
+            font-family: DINCondensed-Bold, DINCondensed;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #334CC9;
+            margin-right: 0.5rem;
+        }
+
+        .layer-03 .layer .publish-box .num-box .num:last-of-type {
+            margin-right: 0;
+        }
+
+        .layer-03 .layer .publish-box .unit {
+            font-size: 1rem;
+            font-family: MicrosoftYaHei;
+            color: #333333;
+            margin-left: 0.75rem;
+        }
+
+        .layer-04 {
+            min-height: 42.18rem;
+            background-image: url('./images/layer-04-bj.png');
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: contain;
+            padding-top: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .layer-04 .layer img {
+            display: block;
+            width: 100%;
+        }
+
+        .layer-04 h4 {
+            padding-top: 5.5rem;
+            font-size: 1.5rem;
+            font-family: MicrosoftYaHei;
+            color: #252525;
+            line-height: 2.625rem;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .layer-04 ul {
+            margin-top: 3.5rem;
+        }
+
+        .layer-04 ul li {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            font-family: MicrosoftYaHei;
+            color: #000000;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .layer-04 ul li span {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #598DF7;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 0.6rem;
+        }
+
+        .layer-04 ul li span::after {
+            display: block;
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            background: #598DF7;
+            opacity: 0.3;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .layer-05 {
+            min-height: 45.5rem;
+        }
+
+        .layer-05 h4 {
+            padding-top: 4.25rem;
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 400;
+            font-family: MicrosoftYaHei;
+            color: rgba(0, 0, 0, 0.85);
+            margin-bottom: 3.75rem;
+        }
+
+        .layer-05 .col-content .content-box {
+            min-height: 29.375rem;
+            background-color: #FFFFFF;
+            background-position: right top;
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding: 1.875rem;
+            box-sizing: border-box;
+        }
+
+        .layer-05 .col-content .content-box .sub-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .layer-05 .col-content .content-box .sub-title span {
+            font-size: 1.25rem;
+            font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.85);
+            margin-left: 0.625rem;
+        }
+
+        .layer-05 .col-content .content-box .unit-price {
+            display: flex;
+            align-items: end;
+            font-size: 1rem;
+            font-family: MicrosoftYaHei;
+            color: rgba(102, 102, 102, 0.85);
+        }
+
+        .layer-05 .col-content .content-box .unit-price span {
+            font-size: 3rem;
+            font-family: DINCondensed-Bold, DINCondensed;
+            font-weight: bold;
+            color: #999999;
+            position: relative;
+            top: 0.7rem;
+        }
+
+        .layer-05 .col-content .content-box .btn {
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .layer-05 .col-content .content-box .line {
+            margin-top: 1.875rem;
+            border: 1px solid #ECECEC;
+        }
+
+        .layer-05 .col-content .content-box ul li {
+            font-size: 0.875rem;
+            font-family: MicrosoftYaHei;
+            color: #333333;
+            margin-top: 1rem;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .layer {
+                max-width: 1200px;
+                margin: auto;
+                position: relative;
+            }
+
+            .layer-content {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+
+            html {
+                font-size: 12px;
+            }
+
+            .layer {
+                padding: 0 20px;
+                margin: auto;
+                position: relative;
+                box-sizing: border-box;
+            }
+
+            .layer-content {
+                margin: auto !important;
+            }
+
+            .col-content {
+                padding: 0 !important;
+                margin-top: 1.25rem;
+            }
+
+            .layer-01 {
+                background-position: 60%;
+            }
+
+            #element-strings {
+                background-color: rgba(0, 0, 0, 0.4);
+
+            }
+
+            .layer-02 {
+                margin-bottom: 1.25rem;
+            }
+
+            .layer-03 .layer .publish-box .num-box .num {
+                line-height: 4.6rem;
+            }
+
+            .layer-05 .col-content .content-box .unit-price span {
+                top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="layer-01">
+            <div class="banner-content">
+                <img src="./images/logo.png" alt="" srcset="">
+                <div class="layer" style="height: calc(100% - 2.6rem);">
+                    <div class="layer-content">
+                        <div id="element-strings">
+                            <p>您的<span id="element"></span></p>
+                            <p>内容编辑</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="layer white-layer layer-02">
+                <el-row :gutter="33" class="layer-content">
+                    <el-col :lg="8" :md="8" :sm="8" :xs="24" class="col-content">
+                        <div class="dark-grey-layer">
+                            <div class="nav-icon-box">
+                                <img src="./images/nav-ico-01.png" class="nav-icon" alt="" srcset=""
+                                    style="width: 5.75rem;">
+                            </div>
+                            <h6 class="title">专业内容生产平台</h6>
+                            <p>根据您所在的行业和专业定制生产的内容<br />
+                                每天定时定量为您输出专业内容，赛过您的内容团队<br />
+                                平台上完成内容在线编辑，内容审批到对外发布<br />
+                                丰富的API接口，内容无缝衔接</p>
+                        </div>
+                    </el-col>
+                    <el-col :lg="8" :md="8" :sm="8" :xs="24" class="col-content">
+                        <div class="dark-grey-layer">
+                            <div class="nav-icon-box">
+                                <img src="./images/nav-ico-02.png" class="nav-icon" alt="" srcset=""
+                                    style="width: 5.63rem;">
+                            </div>
+                            <h6 class="title">你身边的GPT专家</h6>
+                            <p>确定GPT技术在您企业运营中的用例<br />
+                                指导和实施适合你企业需求的GPT解决方案<br />
+                                为员工提供培训和研讨会<br />
+                                确保GPT输入数据的准确性和质量</p>
+                        </div>
+                    </el-col>
+                    <el-col :lg="8" :md="8" :sm="8" :xs="24" class="col-content">
+                        <div class="dark-grey-layer">
+                            <div class="nav-icon-box">
+                                <img src="./images/nav-ico-03.png" class="nav-icon" alt="" srcset=""
+                                    style="width: 7.5rem;">
+                            </div>
+                            <h6 class="title">友好的SEO和多语言支持</h6>
+                            <p>为企业提供对SEO友好的专业内容<br />
+                                为企业的整站SEO提供咨询<br />
+                                目前支持内容的中文、英文和日文版</p>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+            <div class="grey-layer layer-03">
+                <div class="layer">
+                    <h4>一个内容工厂的账号等于一个内容团队</h4>
+                    <el-row>
+                        <el-col :lg="10" :md="10" :sm="10" :xs="24">
+                            <ul>
+                                <li>
+                                    <div class="icon-box">
+                                        <img src="./images/layer-03-nav-ico-01.png" alt="">
+                                    </div>
+                                    <p>内容工厂生成的内容，您可以自定义规则、模版和文本格式，内容工厂会根据您的规则生产内容。</p>
+                                </li>
+                                <li>
+                                    <div class="icon-box">
+                                        <img src="./images/layer-03-nav-ico-02.png" alt="">
+                                    </div>
+                                    <p>企业可以向内容工厂描述其用户画像，生产的内容则会以受众可以接受的方式微调。</p>
+                                </li>
+                                <li>
+                                    <div class="icon-box">
+                                        <img src="./images/layer-03-nav-ico-03.png" alt="">
+                                    </div>
+                                    <p>将内容送达到对外网站，企业内部的CMS等系统。</p>
+                                </li>
+                            </ul>
+                            <div class="publish-box">
+                                <div class="sub-title">今日已发文章：</div>
+                                <div class="num-box">
+                                    <div class="num" v-for="item in getPublishNum">{{item}}</div>
+                                </div>
+                                <div class="unit">篇</div>
+                            </div>
+                        </el-col>
+                        <el-col :lg="14" :md="14" :sm="14" :xs="24">
+                            <img src="./images/layer-03-img.png" alt="" srcset="">
+                        </el-col>
+                    </el-row>
+                </div>
+            </div>
+            <div class="white-layer layer-04">
+                <div class="layer">
+                    <el-row>
+                        <el-col :lg="14" :md="14" :sm="14" :xs="24">
+                            <img src="./images/layer-04-img.png" alt="" srcset="">
+                        </el-col>
+                        <el-col :lg="10" :md="10" :sm="10" :xs="24">
+                            <h4>我们是GPT和自动文本生成流程方面的专家<br />
+                                我们可以提供帮助：</h4>
+                            <ul>
+                                <li>
+                                    <span></span>
+                                    <p>评估企业目前的人工智能和自动化能力和基础设施，并就如何整合GPT服务提出建议。</p>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <p>确定GPT技术在企业运营中的用例。</p>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <p>指导选择和实施适合企业特定需求的GPT模式或解决方案。</p>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <p>为将使用或管理GPT服务的员工提供定制的培训和支持。</p>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <p>协助制定和实施数据管理策略，以确保GPT模型所使用的输入数据的准确性和质量。</p>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <p>与企业合作，设计和开发定制的人工智能模型和算法，以满足其独特的需求和挑战。</p>
+                                </li>
+                                <li>
+                                    <span></span>
+                                    <p>提供与GPT和其他技术相关的见解和行业趋势，以帮助企业在其市场上保持最新和竞争力。</p>
+                                </li>
+                            </ul>
+                        </el-col>
+
+                    </el-row>
+                </div>
+            </div>
+            <div class="grey-layer layer-05">
+                <div class="layer">
+                    <h4>选择适合您的VIP计划</h4>
+                    <el-row :gutter="16">
+                        <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-01.png');">
+                                <div class="sub-title">
+                                    <img src="./images/layer-05-nav-01.png" alt="">
+                                    <span>免费版</span>
+                                </div>
+                                <div class="unit-price">
+                                    ￥<span>0</span>元/月
+                                </div>
+                                <el-button type="primary" size="medium" class="btn" @click="addFrom">立即注册</el-button>
+                                <div class="line"></div>
+                                <ul>
+                                    <li>任选一个主题</li>
+                                    <li>每日推送10条主题内容</li>
+                                    <li>API方式推送</li>
+                                </ul>
+                            </div>
+                        </el-col>
+                        <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-02.png');">
+                                <div class="sub-title">
+                                    <img src="./images/layer-05-nav-02.png" alt="">
+                                    <span>青铜版</span>
+                                </div>
+                                <div class="unit-price">
+                                    ￥<span style="color: #334CC9;">199</span>元/月
+                                </div>
+                                <el-button type="primary" size="medium" class="btn" @click="addFrom">立即联系</el-button>
+                                <div class="line"></div>
+                                <ul>
+                                    <li>任选两个主题</li>
+                                    <li>每日推送20条主题内容</li>
+                                    <li>API方式推送</li>
+                                    <li>提供内容网站（样式模版）</li>
+                                    <li>可编辑审批内容</li>
+                                </ul>
+                            </div>
+                        </el-col>
+                        <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-03.png');">
+                                <div class="sub-title">
+                                    <img src="./images/layer-05-nav-03.png" alt="">
+                                    <span>黄金版</span>
+                                </div>
+                                <div class="unit-price">
+                                    ￥<span style="color: #FFA900;">399</span>元/月
+                                </div>
+                                <el-button type="primary" size="medium" class="btn" @click="addFrom">立即联系</el-button>
+                                <div class="line"></div>
+                                <ul>
+                                    <li>任选五个主题</li>
+                                    <li>每日推送50条主题内容</li>
+                                    <li>API方式推送</li>
+                                    <li>提供内容网站（可定制）</li>
+                                    <li>可编辑审批内容</li>
+                                    <li>可公司绑定域名</li>
+                                </ul>
+                            </div>
+                        </el-col>
+                        <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-04.png');">
+                                <div class="sub-title">
+                                    <img src="./images/layer-05-nav-04.png" alt="">
+                                    <span>企业部署</span>
+                                </div>
+                                <div class="unit-price" style="color: #F15A23;font-size: 0.875rem;margin-top:1.2rem;">
+                                    具体价格，<br />
+                                    请联系我们！
+                                </div>
+                                <el-button type="primary" size="medium" class="btn" @click="addFrom">立即联系</el-button>
+                                <div class="line"></div>
+                                <ul>
+                                    <li>内容网站部署</li>
+                                    <li>推送内容定制</li>
+                                    <li>企业生成AI培训</li>
+                                    <li>生成AI的业务咨询</li>
+                                </ul>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </div>
+            </div>
+            <div style="height: 18.8rem;background-color: #1F2236;"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var typed = new Typed('#element', {
+        strings: ['不知疲倦的', '孜孜不倦的'],
+        typeSpeed: 300,
+        backSpeed: 200,
+        loop: true
+    });
+    var content = new Vue({
+        el: '#content',
+        data: function () {
+            return {
+                publishNum: '396'
+            }
+        },
+        computed: {
+            getPublishNum: function () {
+                var publishNum = this.publishNum || 0
+                publishNum = publishNum.toString()
+                var arr = publishNum.split('')
+                return arr
+            }
+        },
+        methods: {
+            addFrom:function(){
+                location.href='https://wj.qq.com/s2/12530192/8bc2/';
+            }
+        }
+    })
+</script>
+
+</html>
