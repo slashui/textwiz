@@ -51,7 +51,7 @@
             height: 37.5rem;
             padding: 0.82rem 1rem;
             box-sizing: border-box;
-            background-image: url('./images//banner.jpg');
+            background-image: url('./images//banner.png');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -116,6 +116,7 @@
         .layer-02 .nav-icon-box .nav-icon {
             display: block;
             margin: auto;
+            width: 6.25rem;
         }
 
         .layer-02 .title {
@@ -233,7 +234,7 @@
 
         .layer-04 .layer img {
             display: block;
-            width: 100%;
+            margin-top: 4.125rem;
         }
 
         .layer-04 h4 {
@@ -305,6 +306,15 @@
             background-size: contain;
             padding: 1.875rem;
             box-sizing: border-box;
+            border-radius: 0.5rem;
+            border: 2px solid transparent;
+        }
+
+        .layer-05 .col-content .default-hover,
+        .layer-05 .col-content .content-box:hover {
+            background: #F7FBFF;
+            box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.1);
+            border-color: #598DF7;
         }
 
         .layer-05 .col-content .content-box .sub-title {
@@ -334,7 +344,7 @@
             font-weight: bold;
             color: #999999;
             position: relative;
-            top: 0.7rem;
+            top: 1rem;
         }
 
         .layer-05 .col-content .content-box .btn {
@@ -352,6 +362,52 @@
             font-family: MicrosoftYaHei;
             color: #333333;
             margin-top: 1rem;
+        }
+
+        .layer-06 {
+            background-color: #1F2236;
+        }
+
+        .layer-06 .company-info {
+            height: 8.875rem;
+            display: flex;
+            align-items: center;
+            align-items: center;
+        }
+
+        .layer-06 .company-info h2 a{
+            display: inline-block;
+            color: #13C1FB;
+            font-size: 1.125rem;
+            font-family: MicrosoftYaHei-Bold, MicrosoftYaHei;
+            font-weight: bold;
+            margin-bottom: 0.6rem;
+        }
+
+        .layer-06 .company-info p {
+            color: #FFFFFF;
+            font-size: 1.125rem;
+        }
+        .layer-06 .company-info .contact-Us{
+            width: 7.5rem;
+            height: 1.75rem;
+            line-height: 1.75rem;
+            background: #409EFF;
+            box-shadow: inset 0px 1px 1px 0px rgba(237,237,237,0.22);
+            border-radius: 0.25rem;
+            text-align: center;
+            display: block;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        .layer-06 .company-info .contact-Us:hover{
+            background: #66b1ff;
+        }
+        .layer-06 .company-info .copyright {
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            opacity: 0.5;
         }
 
         @media only screen and (min-width: 768px) {
@@ -435,8 +491,7 @@
                     <el-col :lg="8" :md="8" :sm="8" :xs="24" class="col-content">
                         <div class="dark-grey-layer">
                             <div class="nav-icon-box">
-                                <img src="./images/nav-ico-01.png" class="nav-icon" alt="" srcset=""
-                                    style="width: 5.75rem;">
+                                <img src="./images/nav-ico-01.png" class="nav-icon" alt="" srcset="">
                             </div>
                             <h6 class="title">专业内容生产平台</h6>
                             <p>根据您所在的行业和专业定制生产的内容<br />
@@ -448,8 +503,7 @@
                     <el-col :lg="8" :md="8" :sm="8" :xs="24" class="col-content">
                         <div class="dark-grey-layer">
                             <div class="nav-icon-box">
-                                <img src="./images/nav-ico-02.png" class="nav-icon" alt="" srcset=""
-                                    style="width: 5.63rem;">
+                                <img src="./images/nav-ico-02.png" class="nav-icon" alt="" srcset="">
                             </div>
                             <h6 class="title">你身边的GPT专家</h6>
                             <p>确定GPT技术在您企业运营中的用例<br />
@@ -461,8 +515,7 @@
                     <el-col :lg="8" :md="8" :sm="8" :xs="24" class="col-content">
                         <div class="dark-grey-layer">
                             <div class="nav-icon-box">
-                                <img src="./images/nav-ico-03.png" class="nav-icon" alt="" srcset=""
-                                    style="width: 7.5rem;">
+                                <img src="./images/nav-ico-03.png" class="nav-icon" alt="" srcset="">
                             </div>
                             <h6 class="title">友好的SEO和多语言支持</h6>
                             <p>为企业提供对SEO友好的专业内容<br />
@@ -497,13 +550,13 @@
                                     <p>将内容送达到对外网站，企业内部的CMS等系统。</p>
                                 </li>
                             </ul>
-                            <div class="publish-box">
+                            <!-- <div class="publish-box">
                                 <div class="sub-title">今日已发文章：</div>
                                 <div class="num-box">
                                     <div class="num" v-for="item in getPublishNum">{{item}}</div>
                                 </div>
                                 <div class="unit">篇</div>
-                            </div>
+                            </div> -->
                         </el-col>
                         <el-col :lg="14" :md="14" :sm="14" :xs="24">
                             <img src="./images/layer-03-img.png" alt="" srcset="">
@@ -513,11 +566,11 @@
             </div>
             <div class="white-layer layer-04">
                 <div class="layer">
-                    <el-row>
-                        <el-col :lg="14" :md="14" :sm="14" :xs="24">
+                    <el-row :gutter="40">
+                        <el-col :lg="12" :md="12" :sm="12" :xs="24">
                             <img src="./images/layer-04-img.png" alt="" srcset="">
                         </el-col>
-                        <el-col :lg="10" :md="10" :sm="10" :xs="24">
+                        <el-col :lg="12" :md="12" :sm="12" :xs="24">
                             <h4>我们是GPT和自动文本生成流程方面的专家<br />
                                 我们可以提供帮助：</h4>
                             <ul>
@@ -560,7 +613,8 @@
                     <h4>选择适合您的VIP计划</h4>
                     <el-row :gutter="16">
                         <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
-                            <div class="content-box" style="background-image: url('./images/layer-05-bj-01.png');">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-01.png');"
+                                @mouseover="removeClass">
                                 <div class="sub-title">
                                     <img src="./images/layer-05-nav-01.png" alt="">
                                     <span>免费版</span>
@@ -577,14 +631,15 @@
                                 </ul>
                             </div>
                         </el-col>
-                        <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
-                            <div class="content-box" style="background-image: url('./images/layer-05-bj-02.png');">
+                        <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content ">
+                            <div class="content-box default-hover"
+                                style="background-image: url('./images/layer-05-bj-02.png');" @mouseover="removeClass">
                                 <div class="sub-title">
                                     <img src="./images/layer-05-nav-02.png" alt="">
                                     <span>青铜版</span>
                                 </div>
                                 <div class="unit-price">
-                                    ￥<span style="color: #334CC9;">199</span>元/月
+                                    ￥<span style="color: #334CC9;">499</span>元/月
                                 </div>
                                 <el-button type="primary" size="medium" class="btn" @click="addFrom">立即联系</el-button>
                                 <div class="line"></div>
@@ -598,13 +653,14 @@
                             </div>
                         </el-col>
                         <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
-                            <div class="content-box" style="background-image: url('./images/layer-05-bj-03.png');">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-03.png');"
+                                @mouseover="removeClass">
                                 <div class="sub-title">
                                     <img src="./images/layer-05-nav-03.png" alt="">
                                     <span>黄金版</span>
                                 </div>
                                 <div class="unit-price">
-                                    ￥<span style="color: #FFA900;">399</span>元/月
+                                    ￥<span style="color: #FFA900;">999</span>元/月
                                 </div>
                                 <el-button type="primary" size="medium" class="btn" @click="addFrom">立即联系</el-button>
                                 <div class="line"></div>
@@ -619,7 +675,8 @@
                             </div>
                         </el-col>
                         <el-col :lg="6" :md="6" :sm="6" :xs="24" class="col-content">
-                            <div class="content-box" style="background-image: url('./images/layer-05-bj-04.png');">
+                            <div class="content-box" style="background-image: url('./images/layer-05-bj-04.png');"
+                                @mouseover="removeClass">
                                 <div class="sub-title">
                                     <img src="./images/layer-05-nav-04.png" alt="">
                                     <span>企业部署</span>
@@ -641,7 +698,29 @@
                     </el-row>
                 </div>
             </div>
-            <div style="height: 18.8rem;background-color: #1F2236;"></div>
+            <div class="layer-06">
+                <div class="layer">
+                    <el-row class="company-info" :gutter="16">
+                        <el-col :lg="{
+                            offset: 6,
+                            span:6
+                        }" :md="{
+                            offset: 6,
+                            span:6
+                        }" :sm="{
+                            offset: 6,
+                            span:6
+                        }" :xs="24" class="text-right">
+                            <h2><a href="https://kwg093bnyd5.feishu.cn/wiki/ARt6wJ2xRi8CbIk2QqgcZUyVnMh" target="_blank">光环 AI 弹药库</a></h2>
+                            <p>帮助你成为一个人的千军万马</p>
+                        </el-col>
+                        <el-col :lg="12" :md="12" :sm="12" :xs="24">
+                            <a href="mailto:slashui@Live.cn" class="contact-Us">联系我们</a>
+                            <p class="copyright">© 2023 TextWiz Ltd. All rights reserved</p>
+                        </el-col>
+                    </el-row>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -668,8 +747,15 @@
             }
         },
         methods: {
-            addFrom:function(){
-                location.href='https://wj.qq.com/s2/12530192/8bc2/';
+            addFrom: function () {
+                window.open('https://wj.qq.com/s2/12530192/8bc2/', '_black')
+            },
+            removeClass: function() {
+                var default_hover = document.getElementsByClassName('layer-05')[0].getElementsByClassName('default-hover')
+                if (default_hover.length > 0) {
+                    var className = default_hover[0].className
+                    default_hover[0].className = className.replace('default-hover', '')
+                }
             }
         }
     })
